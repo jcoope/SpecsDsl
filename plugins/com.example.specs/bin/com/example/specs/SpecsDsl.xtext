@@ -1,0 +1,47 @@
+grammar com.example.specs.SpecsDsl with org.eclipse.xtext.common.Terminals
+
+generate specsDsl "http://www.example.com/specs/SpecsDsl"
+
+import "http://www.example.org/library" as library
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+
+Model:
+	specs+=Spec*;
+	
+Spec:
+	'Specification' name=STRING ":"
+		processor = Processor
+		motherboard = Motherboard
+		memories+= Memory*
+;
+
+
+Processor:
+	'Processor' name=[library::Processor] "{"
+		clockSpeed = ClockSpeed
+		cores = Cores
+	"}"
+;
+
+ClockSpeed:'clockSpeed' clockSpeed=FLOAT;
+Cores: 'cores' cores=INT;
+
+Motherboard:
+	'Motherboard' name=[library::Motherboard]
+;
+
+Memory:
+	'Memory' name=[library::Memory] "{"
+		capacity = Capacity
+	"}"
+;
+Capacity :'capacity' capacity=INT;
+
+FLOAT returns ecore::EFloat : INT ('.' INT)?;
+
+@Override 
+terminal SL_COMMENT: '--' !('\n'|'\r')* ('\r'? '\n')?;
+	
+
+

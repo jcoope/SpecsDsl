@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<library:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:library="http://www.example.org/library" name="">
+  <memories name="PC417000" capacity="8"/>
+  <memories name="PC312800" capacity="4"/>
+  <memories name="PC310600" capacity="2"/>
+  <memories name="PC25300" capacity="2"/>
+</library:Library>

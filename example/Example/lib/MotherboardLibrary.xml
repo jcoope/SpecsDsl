@@ -1,0 +1,6 @@
+<library>
+	<motherboard name="AsusAMD" />
+	<motherboard name="AsusIntel" />
+	<motherboard name="MSIAMD" />
+	<motherboard name="MSIIntel" />
+</library>

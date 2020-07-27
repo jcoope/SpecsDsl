@@ -1,0 +1,6 @@
+<library>
+	<memory name="PC417000" capacity="8" />
+	<memory name="PC312800" capacity="4"/>
+	<memory name="PC310600" capacity="2"/>
+	<memory name="PC25300" capacity="2"/>
+</library>

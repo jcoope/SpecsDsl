@@ -1,0 +1,13 @@
+-- this is the specification for a business machine
+Specification "Business Machine":
+	Processor IntelCorei5 { clockSpeed 2.8 cores 4 }
+	Motherboard AsusIntel 
+	Memory PC25300 { capacity 2 }
+	
+-- this is the specification for a gaming machine
+Specification "Gaming Machine":
+	Processor AMDRyzen5 { clockSpeed 3.2 cores 6 }
+	Motherboard MSIAMD 
+	Memory PC417000 { capacity 8 }	
+	
+	

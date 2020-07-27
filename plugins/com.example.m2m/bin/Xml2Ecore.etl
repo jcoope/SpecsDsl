@@ -1,0 +1,27 @@
+rule library transform s:X!t_Library to t:M!Library {
+	t.name = s.a_name;		
+	for (e in s.children.equivalent()) {
+		if (e.isTypeOf(M!Processor)){
+			t.processors.add(e);
+		} else if (e.isTypeOf(M!Motherboard)){
+			t.motherboards.add(e);
+		} else if (e.isTypeOf(M!Memory)){
+			t.memories.add(e);
+		}
+	}	
+}
+
+rule processor transform s:X!t_Processor to t:M!Processor{
+	t.name = s.a_name;
+	t.clockSpeed = Native("java.lang.Float").parseFloat(s.a_clockSpeed);
+	t.cores = Native("java.lang.Integer").parseInt(s.a_cores);
+}
+
+rule motherboard transform s:X!t_Motherboard to t:M!Motherboard {
+	t.name = s.a_name;
+}
+
+rule memory transform s:X!t_Memory to t:M!Memory{
+	t.name = s.a_name;
+	t.capacity = Native("java.lang.Integer").parseInt(s.a_capacity);
+}

@@ -1,0 +1,5 @@
+<library>
+	<processor name="IntelCorei7" clockSpeed="3.4" cores="4" />
+	<processor name="IntelCorei5" clockSpeed="2.8" cores="4" />
+	<processor name="AMDRyzen5" clockSpeed="3.2" cores="6" />
+</library>

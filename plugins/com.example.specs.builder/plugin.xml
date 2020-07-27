@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="specsBuilder"
+         name="Specs Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="com.example.specs.builder.builder.SpecsBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="specsBuilderNature"
+         name="Specs Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.example.specs.builder.builder.SpecsNature">
+         </run>
+      </runtime>
+      <builder
+            id="com.example.specs.builder.specsBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.example.specs.builder.specsBuilderNature.category"
+            name="Specs Project Nature commands">
+      </category>
+      <command
+            categoryId="com.example.specs.builder.specsBuilderNature.category"
+            defaultHandler="com.example.specs.builder.builder.AddRemoveSpecsNatureHandler"
+            id="com.example.specs.builder.addRemoveSpecsNature"
+            name="Add/RemoveSpecs Project Nature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               label="Disable Specs builder"
+               commandId="com.example.specs.builder.addRemoveSpecsNature"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IProject">
+                        <test
+                              property="org.eclipse.core.resources.projectNature"
+                              value="com.example.specs.builder.specsBuilderNature">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               label="Enable Specs Builder"
+               commandId="com.example.specs.builder.addRemoveSpecsNature"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IProject">
+                        <not>
+                           <test
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="com.example.specs.builder.specsBuilderNature">
+                           </test>
+                        </not>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+</plugin>
